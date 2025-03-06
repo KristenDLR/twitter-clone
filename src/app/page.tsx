@@ -1,5 +1,6 @@
 
-import { LeftSidebar } from "@/components/LeftSidebar";
+import { LeftSidebar } from "@/sections/LeftSidebar";
+import { Main } from "@/sections/Main";
 
 
 const Home: React.FunctionComponent = () => {
@@ -9,7 +10,9 @@ const Home: React.FunctionComponent = () => {
       <div className="max-w-screen-xl w-full h-full flex relative">
         {/* left sidebar for navigation */}
         <LeftSidebar />
-       {/* <main>Home section</main> */}
+        {/* Main section with twitter feed */}
+        <Main />
+        {/* right sidebar info */}
         {/* <section>right section</section> */}
       </div>
     </h1>

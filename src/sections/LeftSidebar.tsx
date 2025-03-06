@@ -58,7 +58,7 @@ export const LeftSidebar: React.FunctionComponent = () => {
                             <div> {item.title !== NAVIGATION_ITEMS[0].title && <div>{item.title}</div>}</div>
                         </Link>
                     ))}
-                    <button className="m-4 rounded-full bg-sky-500 px-6 py-4 text-2xl text-center hover:opacity-75 transition duration100">
+                    <button className="m-4 rounded-full bg-sky-500 px-6 py-4 text-2xl text-center hover:opacity-75 transition duration200">
                         Tweet
                     </button>
                 </div>
