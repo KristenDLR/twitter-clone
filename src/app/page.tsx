@@ -12,6 +12,7 @@ const Home: React.FunctionComponent = () => {
         <LeftSidebar />
         {/* Main section with twitter feed */}
         <Main />
+        {/* right sidebar info */}
         {/* <section>right section</section> */}
       </div>
     </h1>
