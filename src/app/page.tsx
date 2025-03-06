@@ -1,6 +1,6 @@
 
-import { LeftSidebar } from "@/components/LeftSidebar";
-import { Main } from "@/components/Main";
+import { LeftSidebar } from "@/sections/LeftSidebar";
+import { Main } from "@/sections/Main";
 
 
 const Home: React.FunctionComponent = () => {
