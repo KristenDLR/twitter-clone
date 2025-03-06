@@ -19,7 +19,7 @@ export const TweetContainer: React.FunctionComponent<ITweetContainerProps> = (pr
    const { name, userName, timePosted, tweet } = props;
 
     return (
-        <>
+
             <div className="p-2 border-b-[0.5px] border-gray-600 flex space-x-4">
                 <div>
                     <div className="w-10 h-10 bg-slate-200 rounded-full" />
@@ -48,6 +48,6 @@ export const TweetContainer: React.FunctionComponent<ITweetContainerProps> = (pr
                     </div>
                 </div>
             </div>
-        </>
+    
     )
 }
