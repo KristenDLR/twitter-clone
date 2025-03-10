@@ -2,9 +2,20 @@
 import { LeftSidebar } from "@/sections/LeftSidebar";
 import { Main } from "@/sections/Main";
 import { RightSidebar } from "@/sections/RightSidebar";
+import { createClient as createClientForServer } from "@/utils/supabase/server";
 
 
-const Home: React.FunctionComponent = () => {
+// const Home: React.FunctionComponent = () => {
+export default async function Home() {
+
+  //TODO: Dialogue box with google sign in or email or signUP
+
+  const supabase = await createClientForServer()
+  //getUser it sends a request to supaBase server
+  const session = await supabase.auth.getUser()
+  //getSession should only be used on client side
+  //here is sessions I have the email
+  console.log(session)
 
   return (
     <div className="w-full h-full flex justify-center items-center relative bg-black">
@@ -22,4 +33,4 @@ const Home: React.FunctionComponent = () => {
 
 }
 
-export default Home;
+// export default Home;
