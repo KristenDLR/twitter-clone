@@ -38,4 +38,9 @@ async function signInWithGoogle(formData: FormData) {
     return signInWith('google' as Provider)
 }
 
-export { signInWithGoogle }
+const signOut = async() => {
+    const supabase = await createClientForServer()
+    await supabase.auth.signOut()
+}
+
+export { signInWithGoogle, signOut }

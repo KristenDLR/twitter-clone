@@ -1,3 +1,7 @@
+import { Button } from "@/components/ui/button";
+import { signOut } from "@/utils/supabase/actions";
+import { createClient as createClientForServer } from "@/utils/supabase/server";
+import { Popover, PopoverContent, PopoverTrigger } from "@radix-ui/react-popover";
 import Link from "next/link";
 import { BsThreeDots, BsTwitter } from "react-icons/bs";
 import { FaRegBookmark } from "react-icons/fa";
@@ -8,7 +12,73 @@ import { PiBellBold } from "react-icons/pi";
 import { RiHome7Fill } from "react-icons/ri";
 
 
-export const LeftSidebar: React.FunctionComponent = () => {
+export const LeftSidebar: React.FunctionComponent = async () => {
+
+    const supabase = await createClientForServer()
+    //getUser it sends a request to supaBase server
+    const session = await supabase.auth.getUser()
+    //getSession should only be used on client side
+    //here is sessions I have the email
+    console.log(session)
+
+    const userInfoBadge = async () => {
+        if (!session.data.user) {
+            return (
+                <button className="rounded-full flex items-center space-x-2 bg-transparent p-4 text-center hover:bg-white/10 transition duration-200 w-full justify-between">
+                    <div className="flex items-center space-x-2">
+                        <div className="rounded-full bg-slate-400 w-10 h-10"></div>
+                        <div className="text-left text-sm">
+                            <div className="font-semibold">
+                                USER NAME
+                            </div>
+                            <div className="text-xs">
+                                @userName
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <BsThreeDots />
+                    </div>
+                </button>
+            )
+        } else {
+            const { data: {
+                user: { user_metadata }
+            }, } = session
+
+            const { name, email, user_name, avatar_url } = user_metadata;
+            const userName = user_name ? `@${user_name}` : "NO Username"
+
+            return (
+                <div className="rounded-full flex items-center space-x-2 bg-transparent p-4 text-center hover:bg-white/10 transition duration-200 w-full justify-between">
+                    <div className="flex items-center space-x-2">
+                        {/* <div className="rounded-full bg-slate-400 w-10 h-10"></div> */}
+                        {avatar_url && (
+                            <img src={avatar_url} alt={name} className="rounded-full  w-10 h-10" />
+                        )}
+                        <div className="text-left text-sm">
+                            <div className="text-sm font-semibold">
+                                {name}
+                            </div>
+                            <div className="text-xs">
+                                {userName}
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <Popover>
+                            <PopoverTrigger><BsThreeDots /></PopoverTrigger>
+                            <PopoverContent side={"top"} sideOffset={10}>
+                                <form action={signOut}>
+                                    <Button >Sign Out</Button>
+                                </form>
+                            </PopoverContent>
+                        </Popover>
+                    </div>
+                </div>
+            )
+        }
+    }
 
 
     const NAVIGATION_ITEMS = [
@@ -61,23 +131,7 @@ export const LeftSidebar: React.FunctionComponent = () => {
                     Tweet
                 </button>
             </div>
-
-            <button className="rounded-full flex items-center space-x-2 bg-transparent p-4 text-center hover:bg-white/10 transition duration-200 w-full justify-between">
-                <div className="flex items-center space-x-2">
-                    <div className="rounded-full bg-slate-400 w-10 h-10"></div>
-                    <div className="text-left text-sm">
-                        <div className="font-semibold">
-                            USER NAME
-                        </div>
-                        <div className="text-xs">
-                            @userName
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <BsThreeDots />
-                </div>
-            </button>
+            {userInfoBadge()}
         </section>
 
     )
