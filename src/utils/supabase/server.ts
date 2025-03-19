@@ -2,7 +2,7 @@ import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 
 //To access Supabase from Server Components, Server Actions, and Route Handlers, which run only on the server.
-export async function createClient() {
+export async function createClientForServer() {
   const cookieStore = await cookies()
 
   return createServerClient(

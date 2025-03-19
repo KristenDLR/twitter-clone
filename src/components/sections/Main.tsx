@@ -1,4 +1,4 @@
-import { TweetContainer } from "@/components/TweetContainer"
+import { TweetContainer } from "@components/TweetContainer"
 
 export const Main: React.FunctionComponent = () => {
 

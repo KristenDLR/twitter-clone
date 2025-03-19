@@ -1,5 +1,6 @@
 'use client'
 
+import { signInWithGoogle } from '@utils/actions';
 import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { IoLogoTwitter } from "react-icons/io";
@@ -19,13 +20,16 @@ const AuthForm: React.FC = () => {
                 </h2>
 
                 {/* Sign in with Google */}
-                <button
+                <form>
+                <button formAction={signInWithGoogle}
                     className="flex items-center text-black justify-center w-full border border-gray-300 rounded-full py-2 hover:bg-gray-50 transition"
                 >
                     <FcGoogle className="mr-2 text-xl" />
                     Sign in with Google
                 </button>
 
+                </form>
+               
             </div>
         </div>
     )

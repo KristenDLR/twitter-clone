@@ -1,5 +1,5 @@
-import { FollowContainer } from "@/components/FollowContainer"
-import { TrendContainer } from "@/components/TrendContainer"
+import { FollowContainer } from "@components/FollowContainer"
+import { TrendContainer } from "@components/TrendContainer"
 import { BsSearch } from "react-icons/bs"
 
 
