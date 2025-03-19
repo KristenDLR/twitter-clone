@@ -1,24 +1,24 @@
 'use client'
 import { Button } from '@components/ui/button';
 import { Dialog, DialogContent, DialogOverlay, DialogPortal, DialogTitle } from '@components/ui/dialog';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoLogoTwitter } from 'react-icons/io';
 
 interface AuthOverlayProps {
-  user: any; // Adjust this type according to your session object
+  user: any; 
 }
 
-export default function AuthOverlay({ user }: AuthOverlayProps) {
+
+export const AuthOverlay: React.FunctionComponent<AuthOverlayProps> = (props) => {
+  const { user } = props;
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
     // Open the dialog if there is no user
     if (!user) {
-      // setOpen(true);
-      setOpen(false)
+      setOpen(true);
     } else {
-      // setOpen(false);
-      setOpen(true)
+      setOpen(false);
     }
   }, [user]);
 
